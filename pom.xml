@@ -184,6 +184,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/MangoQuest.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>me.lokka30</groupId>
+            <artifactId>LevelledMobs</artifactId>
+            <version>3.11.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/LevelledMobs.jar</systemPath>
+        </dependency>
         <!-- End Legacy Dependencies -->
 
         <!-- Test Dependencies -->

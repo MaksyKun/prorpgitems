@@ -1,7 +1,9 @@
 package su.nightexpress.quantumrpg.modules.list.itemgenerator.editor.requirements;
 
+import com.sun.source.tree.Tree;
 import mc.promcteam.engine.manager.api.gui.ContentType;
 import mc.promcteam.engine.manager.api.gui.GuiClick;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -9,8 +11,10 @@ import org.jetbrains.annotations.NotNull;
 import su.nightexpress.quantumrpg.modules.list.itemgenerator.ItemGeneratorManager;
 import su.nightexpress.quantumrpg.modules.list.itemgenerator.editor.AbstractEditorGUI;
 import su.nightexpress.quantumrpg.modules.list.itemgenerator.editor.EditorGUI;
+import su.nightexpress.quantumrpg.utils.actions.anvil.AnvilTask;
+import su.nightexpress.quantumrpg.utils.actions.anvil.AnvilUT;
 
-import java.util.List;
+import java.util.*;
 
 public class MainRequirementsGUI extends AbstractEditorGUI {
 
@@ -21,6 +25,15 @@ public class MainRequirementsGUI extends AbstractEditorGUI {
 
     @Override
     protected void onCreate(@NotNull Player player, @NotNull Inventory inventory, int page) {
+
+        TreeMap<String, String> reqInput = new TreeMap<>();
+        reqInput.put("testObject", null);
+        reqInput.put("testObject2", null);
+        AnvilUT.createInputTasks(player, reqInput, output -> {
+            for(Map.Entry<String, String> entry : output.entrySet())
+                Bukkit.getConsoleSender().sendMessage(entry.getKey() + " - " + entry.getValue());
+        });
+
         GuiClick guiClick = (player1, type, clickEvent) -> {
             if (type == null) { return; }
             Class<?> clazz = type.getClass();

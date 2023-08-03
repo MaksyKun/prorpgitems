@@ -23,6 +23,7 @@ public class DropMob extends LoadableItem implements DropCalculator {
 
     protected Set<String> entityGood;
     protected Set<String> mythicGood;
+    protected Set<String> levelledGood;
     protected Set<String> reasonsBad;
 
     @Getter
@@ -38,6 +39,7 @@ public class DropMob extends LoadableItem implements DropCalculator {
 
         this.entityGood = new HashSet<>(cfg.getStringList("vanilla-mobs"));
         this.mythicGood = new HashSet<>(cfg.getStringList("mythic-mobs"));
+        this.levelledGood = new HashSet<>(cfg.getStringList("levelled-mobs"));
         this.reasonsBad = new HashSet<>(cfg.getStringList("prevent-from"));
 
         this.vanillaDrops = cfg.getBoolean("vanilla-drops", true);
@@ -76,6 +78,11 @@ public class DropMob extends LoadableItem implements DropCalculator {
     @NotNull
     public Set<String> getMythic() {
         return this.mythicGood;
+    }
+
+    @NotNull
+    public Set<String> getLevelled() {
+        return this.levelledGood;
     }
 
     @NotNull
