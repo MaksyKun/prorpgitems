@@ -173,7 +173,10 @@ public class Config extends IConfigTemplate {
                 String  formula  = cfg.getString(path2 + "settings.damage", "%damage% * 0.5");
                 boolean ofMax    = cfg.getBoolean(path2 + "settings.of-max-health");
                 double  duration = cfg.getDouble(path2 + "settings.duration", 10);
-                stat = new BleedStat(statName, statFormat, statCap, formula, ofMax, duration);
+                /* Should be considered for older configs */
+                cfg.addMissing(path2 + "settings.tick-rate", 1.25);
+                double  tickRate = cfg.getDouble(path2 + "settings.tick-rate", 1.25);
+                stat = new BleedStat(statName, statFormat, statCap, formula, ofMax, duration, tickRate);
             } else {
                 stat = new SimpleStat(statType, statName, statFormat, statCap);
             }

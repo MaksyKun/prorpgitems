@@ -139,6 +139,7 @@ BLEED_RATE:
     damage: '%damage% * 0.5'
     of-max-health: false
     duration: 10.0
+    tick-rate: 1.25
 
 DISARM_RATE:
   enabled: true

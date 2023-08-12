@@ -114,7 +114,6 @@ public class NestedRequirementsGUI extends AbstractEditorGUI {
             }
             Pair<String, Integer> entry = levels.get(levelIndex);
             if (entry == null) {
-                QuantumRPG.instance.warn("Item is null");
                 this.addButton(this.createButton("new", AbstractEditorGUI.ItemType.NEW, Material.REDSTONE, "&eAdd new requirement", List.of(), invIndex, guiClick));
             } else {
                 String identifier = entry.getFirst();
